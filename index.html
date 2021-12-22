@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://unpkg.com/jquery.terminal/js/jquery.terminal.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/jquery.terminal/css/jquery.terminal.min.css"/>
+</head>
+<style type="text/css">
+        .terminal,
+        span,
+        .cmd,
+        div {
+            --color: rgba(0, 120, 0, 0.99);
+        }
+  
+        .terminal,
+        span {
+            --size: 1.4;
+        }
+    </style>
+<body>
+<script>
+$('body').terminal({
+    whoami: function() {
+    this.echo(ip);
+    },
+    echo: function(what) {
+        this.echo(what);
+    },
+    ls: function() {
+        this.echo('lol dummy foxy');
+    },
+    cat: function(file) {
+        if (file == 'lol') {
+            this.echo('lol lol');
+        }
+        if (file == 'dummy') {
+            this.echo('its an dummy text u dump');
+        }
+        if (file == 'foxy') {
+            const img = $('<img src="https://muerfox.github.io/foxy.jpg">');
+            img.on('load', this.resume);
+            this.pause();
+            this.echo(img);
+        }
+    },
+    help: function() {
+        this.echo('list of commands:\nls\ncat\necho\nwhoami');
+    }
+}, {
+    greetings: 'Arch Linux Fox (tty1)\nuse \"help\" command to see all commands'
+});
+</script>
+</body>
+</html>
+
